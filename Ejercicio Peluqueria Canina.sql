@@ -1,0 +1,37 @@
+DROP DATABASE Peluqueria_canina;
+Create database Peluqueria_canina;
+
+USE Peluqueria_canina;
+
+
+
+CREATE table DUENOS (
+  DNI VARCHAR(30) NOT NULL,
+  Nombre VARCHAR(50) NULL,
+  Apellido VARCHAR(50) NULL,
+  Telefono VARCHAR(45) NULL,
+  Direccion VARCHAR(70) NULL,
+ CONSTRAINT PK_DI PRIMARY KEY(DNI)
+  );
+  
+  CREATE table PERRO (
+	Id_Perro INT NOT NULL AUTO_INCREMENT,
+	Nombre VARCHAR(45) NULL,
+	Fecha_nacimiento DATE NULL,
+	Sexo VARCHAR(30) NULL,
+	DNI_1 VARCHAR(30) NOT NULL,
+	CONSTRAINT PK_IP PRIMARY KEY (Id_Perro),
+    CONSTRAINT FK_D1 FOREIGN KEY (DNI_1) REFERENCES DUENOS (DNI) 
+	);
+    
+CREATE TABLE HISTORIAL (
+Id_historial INT NOT NULL AUTO_INCREMENT,
+Fecha DATE NULL,
+Id_Perro_1  INT(30) NULL, 
+Descripcion VARCHAR (50) NULL,
+Monto INT NULL,
+CONSTRAINT PK_IH PRIMARY KEY (Id_historial),
+CONSTRAINT FK_IP1 FOREIGN KEY (Id_Perro_1) REFERENCES PERRO (Id_Perro)
+);
+    
+
